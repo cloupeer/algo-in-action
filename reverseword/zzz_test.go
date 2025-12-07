@@ -28,3 +28,16 @@ func Test_ZZZ(t *testing.T) {
 	fmt.Println("==> ", ReverseWordsTwoPointers(s))
 	fmt.Println("==> ", ReverseWordsBuilder(s))
 }
+
+// “反转”题目的进阶变体
+//
+// 题目： 给定一个字符串，要求反转单词的顺序，而不是反转单词内部的字母。
+// 输入："the sky is blue"
+// 输出："blue is sky the"
+//
+// 要求：必须处理掉输入中可能存在的多余空格（首尾空格、单词间多于一个的空格）。
+func Test_Words(t *testing.T) {
+	s := "  a b"
+	fmt.Printf("%s_end\n", ReverseWordsFields(s))
+	fmt.Printf("%s_end\n", ReverseWordsOptimized(s))
+}
