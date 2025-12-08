@@ -1,4 +1,4 @@
-package reverseword
+package stringz
 
 import "strings"
 

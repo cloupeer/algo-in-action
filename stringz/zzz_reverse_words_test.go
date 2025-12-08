@@ -1,4 +1,4 @@
-package reverseword
+package stringz
 
 import (
 	"fmt"
@@ -36,7 +36,7 @@ func Test_ZZZ(t *testing.T) {
 // 输出："blue is sky the"
 //
 // 要求：必须处理掉输入中可能存在的多余空格（首尾空格、单词间多于一个的空格）。
-func Test_Words(t *testing.T) {
+func Test_ReverseWords(t *testing.T) {
 	s := "  a b"
 	fmt.Printf("%s_end\n", ReverseWordsFields(s))
 	fmt.Printf("%s_end\n", ReverseWordsOptimized(s))

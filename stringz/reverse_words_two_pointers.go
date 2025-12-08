@@ -1,4 +1,4 @@
-package reverseword
+package stringz
 
 func ReverseWordsTwoPointers(s string) string {
 
