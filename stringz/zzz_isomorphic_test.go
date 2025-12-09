@@ -30,10 +30,20 @@ func Test_Isomorphic(t *testing.T) {
 			args: args{s: "paper", t: "title"},
 			want: true,
 		},
+		{
+			args: args{s: "ab", t: "ca"},
+			want: true,
+		},
 	}
 
 	for _, tt := range tests {
 		actual := IsIsomorphic(tt.args.s, tt.args.t)
+		assert.Equal(tt.want, actual)
+
+		actual = IsIsomorphicMapping(tt.args.s, tt.args.t)
+		assert.Equal(tt.want, actual)
+
+		actual = IsIsomorphicIndexing(tt.args.s, tt.args.t)
 		assert.Equal(tt.want, actual)
 	}
 }
