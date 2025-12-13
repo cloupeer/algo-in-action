@@ -3,7 +3,7 @@ package stringz
 // 给定一个字符串 s ，请你找出其中不含有重复字符的最长子串的长度。
 // s = "abcabcbb"  => 3 (abc)
 // s = "bbbbb"  => 1 (b)
-func SubStrLongest(s string) int {
+func LongestSubString(s string) int {
 	if len(s) == 0 {
 		return 0
 	}
@@ -24,7 +24,36 @@ func SubStrLongest(s string) int {
 	return length
 }
 
-func lengthOfLongestSubstringBest(s string) int {
+// 滑动窗口通用范式：
+//  1. [核心] 维护一个动态区间 [left, right]，通过双指针操作。
+//  2. [扩张] 右指针(right)主动向右探索，寻找可行解。
+//  3. [收缩] 当窗口打破约束条件(如出现重复字符)时，左指针(left)被动向右收缩，
+//     通过移除左侧元素(s[left])来恢复窗口的合法性。
+//  4. [结算] 每次窗口状态合法时，计算当前长度并更新全局最大值。
+func LongestSubStringGeneral(s string) int {
+	if len(s) == 0 {
+		return 0
+	}
+
+	var chars [256]bool
+	longest := 0
+	left := 0
+	for right := range s {
+		c := s[right]
+
+		for chars[c] {
+			chars[s[left]] = false
+			left++
+		}
+
+		chars[c] = true
+		longest = max(longest, right-left+1)
+	}
+
+	return longest
+}
+
+func LongestSubStringBest(s string) int {
 	// ASCII 只有 128 个字符
 	// lastOccurred[x] 存储字符 x 上次出现的索引
 	// 初始化为 -1 表示未出现过（或者用 0，但需要小心 index=0 的情况处理）

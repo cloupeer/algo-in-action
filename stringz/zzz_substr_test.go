@@ -20,9 +20,19 @@ func Test_SubStrIndex(t *testing.T) {
 }
 
 func Test_SubStrLongest(t *testing.T) {
-	fmt.Println("==> ", SubStrLongest("abcabcbb"))
-	fmt.Println("==> ", SubStrLongest("bbbbb"))
+	fmt.Println("==> ", LongestSubString("abcabcbb"))
+	fmt.Println("==> ", LongestSubString("bbbbb"))
+	fmt.Println("==> ", LongestSubString("pwwkew"))
 
-	fmt.Println("==> ", lengthOfLongestSubstringBest("abcabcbb"))
-	fmt.Println("==> ", lengthOfLongestSubstringBest("bbbbb"))
+	fmt.Println()
+
+	fmt.Println("==> ", LongestSubStringGeneral("abcabcbb"))
+	fmt.Println("==> ", LongestSubStringGeneral("bbbbb"))
+	fmt.Println("==> ", LongestSubStringGeneral("pwwkew"))
+
+	fmt.Println()
+
+	fmt.Println("==> ", LongestSubStringBest("abcabcbb"))
+	fmt.Println("==> ", LongestSubStringBest("bbbbb"))
+	fmt.Println("==> ", LongestSubStringBest("pwwkew"))
 }
