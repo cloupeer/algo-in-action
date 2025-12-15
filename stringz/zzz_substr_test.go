@@ -36,3 +36,7 @@ func Test_SubStrLongest(t *testing.T) {
 	fmt.Println("==> ", LongestSubStringBest("bbbbb"))
 	fmt.Println("==> ", LongestSubStringBest("pwwkew"))
 }
+
+func Test_SubStringLongestTwoChar(t *testing.T) {
+	fmt.Println("==> ", LongestSubStringTwoChar("abcbdc"))
+}

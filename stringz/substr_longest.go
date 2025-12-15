@@ -82,3 +82,42 @@ func LongestSubStringBest(s string) int {
 	}
 	return maxLength
 }
+
+// 至多包含两个不同字符的最长子串
+// "abcbdc" => bcb
+func LongestSubStringTwoChar(s string) int {
+	if len(s) == 0 {
+		return 0
+	}
+
+	runes := []rune(s)
+
+	// 子串中字符的个数
+	seen := make(map[rune]int)
+	// 子串长度
+	length := 0
+	// 左指针
+	left := 0
+
+	// 另一种更简洁的写法是：先进行 seen[c]++ 再判断 len(seen) > 2 ，这样可以省略 ok 的判断
+	for right, c := range runes {
+		_, ok := seen[c]
+
+		// 如果子串条件不满足，则停止探测，改变子串范围
+		// 来了 新字符 且 坑位已满
+		for !ok && len(seen) >= 2 {
+			b := runes[left]
+			seen[b]--
+			if seen[b] == 0 {
+				delete(seen, b)
+			}
+			left++
+		}
+
+		// 子串条件满足，右指针继续移动探测
+		seen[c]++
+		length = max(length, right-left+1)
+	}
+
+	return length
+}
