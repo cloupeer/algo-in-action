@@ -40,3 +40,7 @@ func Test_SubStrLongest(t *testing.T) {
 func Test_SubStringLongestTwoChar(t *testing.T) {
 	fmt.Println("==> ", LongestSubStringTwoChar("abcbdc"))
 }
+
+func Test_MinimumWindowSubstring(t *testing.T) {
+	fmt.Println("==> ", MinimumWindowSubstring("ADOBECODEBANC", "ABC"))
+}
