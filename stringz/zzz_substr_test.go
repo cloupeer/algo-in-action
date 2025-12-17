@@ -44,3 +44,8 @@ func Test_SubStringLongestTwoChar(t *testing.T) {
 func Test_MinimumWindowSubstring(t *testing.T) {
 	fmt.Println("==> ", MinimumWindowSubstring("ADOBECODEBANC", "ABC"))
 }
+
+func Test_FindAllAnagrams(t *testing.T) {
+	fmt.Println("==> ", FindAnagrams("cbaebabacd", "abc"))
+	fmt.Println("==> ", FindAnagramsOptimized("cbaebabacd", "abc"))
+}
