@@ -49,3 +49,10 @@ func Test_FindAllAnagrams(t *testing.T) {
 	fmt.Println("==> ", FindAnagrams("cbaebabacd", "abc"))
 	fmt.Println("==> ", FindAnagramsOptimized("cbaebabacd", "abc"))
 }
+
+func Test_LongestPalindrome(t *testing.T) {
+	fmt.Println("==> ", LongestPalindrome("babad"))
+	fmt.Println("==> ", LongestPalindrome("cbbd"))
+	fmt.Println("==> ", LongestPalindrome("abc"))
+	fmt.Println("==> ", LongestPalindrome("baab"))
+}

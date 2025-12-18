@@ -121,3 +121,54 @@ func LongestSubStringTwoChar(s string) int {
 
 	return length
 }
+
+// 给你一个字符串 s，找到 s 中最长的回文子串。
+//
+//	回文：如果字符串向前和向后读都相同，则它满足回文性；
+//	子串：子字符串 是字符串中连续的非空字符序列。
+//
+// 输入： s = "babad"
+// 输出： bab   aba也符合题意
+// 输入： s = "cbbd"
+// 输出： "bb"
+//
+// 回文串一定有一个“中心”。 奇数长度，中心是一个字符。偶数长度，中心是两个字符（字符对）。
+// 解法：遍历每一个字符，从中心向两边扩展。
+// 情况一（奇数）：left = i, right = i。
+// 情况二（偶数）：left = i, right = i + 1。
+// 对每次扩展，只要 s[left] == s[right] 就一直向外走 (left--, right++)。
+// 记录最大的长度。
+func LongestPalindrome(s string) string {
+	if len(s) < 2 {
+		return s
+	}
+
+	start := 0
+	maxLen := 1
+
+	expand := func(left, right int) (int, int) {
+		for left >= 0 && right < len(s) && s[left] == s[right] {
+			left--
+			right++
+		}
+
+		return left + 1, right - 1
+	}
+
+	for i := range len(s) {
+		l1, r1 := expand(i, i)
+		l2, r2 := expand(i, i+1)
+
+		if r1-l1+1 > maxLen {
+			start = l1
+			maxLen = r1 - l1 + 1
+		}
+
+		if r2-l2+1 > maxLen {
+			start = l2
+			maxLen = r2 - l2 + 1
+		}
+	}
+
+	return s[start : start+maxLen]
+}
