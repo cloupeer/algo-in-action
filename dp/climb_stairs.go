@@ -1,4 +1,4 @@
-package stringz
+package dp
 
 // 假设你正在爬楼梯。需要 n 阶你才能到达楼顶。 每次你可以爬 1 或 2 个台阶。 你有多少种不同的方法可以爬到楼顶？
 // 走到 10 阶的方法数 = 走到 9 阶的方法数 + 走到 8 阶的方法数。
@@ -19,7 +19,7 @@ func ClimbStairs(n int) int {
 	return d[n]
 }
 
-func ClimbStairsOptimize(n int) int {
+func ClimbStairsOptimized(n int) int {
 	if n <= 2 {
 		return n
 	}
