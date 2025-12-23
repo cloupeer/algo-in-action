@@ -89,3 +89,47 @@ func UniquePathsWithObstacles(obstacleGrid [][]int) int {
 
 	return dp[n-1]
 }
+
+// LeetCode 64. 最小路径和 (Minimum Path Sum)
+// 输入：
+// [
+//
+//	[1, 3, 1],
+//	[1, 5, 1],
+//	[4, 2, 1]
+//
+// ]
+// 输出：7
+// 路径：1 -> 3 -> 1 -> 1 -> 1
+func MinimumPathSum(grid [][]int) int {
+	if len(grid) == 0 {
+		return 0
+	}
+
+	m, n := len(grid), len(grid[0])
+
+	// dp[i] 存储当前位置的最小路径和
+	// dp[i] = min(dp[i], dp[i-1])
+	dp := make([]int, n)
+
+	// 1. 初始化第一行
+	dp[0] = grid[0][0]
+	for j := 1; j < n; j++ {
+		dp[j] = dp[j-1] + grid[0][j]
+	}
+
+	// 2. 遍历剩余行
+	for i := 1; i < m; i++ {
+		for j := 0; j < n; j++ {
+			if j == 0 {
+				// 第一列：只能从上面下来
+				dp[0] = dp[0] + grid[i][0]
+			} else {
+				// 其他列：min(上面, 左边) + 当前花费
+				dp[j] = min(dp[j], dp[j-1]) + grid[i][j]
+			}
+		}
+	}
+
+	return dp[n-1]
+}

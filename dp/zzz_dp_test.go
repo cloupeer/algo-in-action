@@ -20,3 +20,12 @@ func Test_Robot(t *testing.T) {
 	fmt.Println("==> ", UniquePaths(3, 7))
 	fmt.Println("==> ", UniquePathsOptimized(3, 7))
 }
+
+func Test_MinimumPathSum(t *testing.T) {
+	weights := [][]int{
+		{1, 3, 1},
+		{1, 5, 1},
+		{4, 2, 1},
+	}
+	fmt.Println("==> ", MinimumPathSum(weights))
+}
