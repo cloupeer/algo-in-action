@@ -56,3 +56,13 @@ func Test_LongestPalindrome(t *testing.T) {
 	fmt.Println("==> ", LongestPalindrome("abc"))
 	fmt.Println("==> ", LongestPalindrome("baab"))
 }
+
+func Test_IsPalindromeInt(t *testing.T) {
+	fmt.Println("==> ", IsPalindromeInt(121))
+	fmt.Println("==> ", IsPalindromeInt(-121))
+	fmt.Println("==> ", IsPalindromeInt(10))
+
+	fmt.Println("==> ", IsPalindromeIntOpt(121))
+	fmt.Println("==> ", IsPalindromeIntOpt(-121))
+	fmt.Println("==> ", IsPalindromeIntOpt(10))
+}

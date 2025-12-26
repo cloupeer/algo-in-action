@@ -1,5 +1,7 @@
 package stringz
 
+import "strconv"
+
 // 给定一个字符串 s ，请你找出其中不含有重复字符的最长子串的长度。
 // s = "abcabcbb"  => 3 (abc)
 // s = "bbbbb"  => 1 (b)
@@ -171,4 +173,56 @@ func LongestPalindrome(s string) string {
 	}
 
 	return s[start : start+maxLen]
+}
+
+// 判断回文数
+// 给你一个整数 x，如果 x 是一个回文整数，返回 true；否则，返回 false。
+// 回文数是指正序（从左向右）和倒序（从右向左）读都是一样的整数。
+// 例如，121 是回文数，而 123 不是。
+func IsPalindromeIntOpt(x int) bool {
+	// 1. 特殊情况：
+	// x < 0: 负数不是回文数
+	// x % 10 == 0 && x != 0: 最后一位是0的数必须是0本身才是回文数（比如 10 不是，0 是）
+	if x < 0 || (x%10 == 0 && x != 0) {
+		return false
+	}
+
+	revertedNumber := 0
+	// 2. 循环直到 x <= revertedNumber，说明已经反转了一半（或一半多）的数字
+	for x > revertedNumber {
+		revertedNumber = revertedNumber*10 + x%10
+		x /= 10
+	}
+
+	// 3. 判断：
+	// x == revertedNumber: 数字长度为偶数，如 1221 -> x=12, reverted=12
+	// x == revertedNumber/10: 数字长度为奇数，如 12321 -> x=12, reverted=123 (去除中间位3)
+	return x == revertedNumber || x == revertedNumber/10
+}
+
+func IsPalindromeInt(x int) bool {
+	if x < 0 {
+		return false
+	}
+
+	return IsPalindrome(strconv.Itoa(x))
+}
+
+func IsPalindrome(s string) bool {
+	if len(s) < 2 {
+		return true
+	}
+
+	left, right := 0, len(s)-1
+
+	for left < right {
+		if s[left] != s[right] {
+			return false
+		}
+
+		left++
+		right--
+	}
+
+	return true
 }
