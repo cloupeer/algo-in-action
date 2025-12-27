@@ -1,6 +1,9 @@
 package stringz
 
-import "strconv"
+import (
+	"fmt"
+	"strconv"
+)
 
 // 给定一个字符串 s ，请你找出其中不含有重复字符的最长子串的长度。
 // s = "abcabcbb"  => 3 (abc)
@@ -190,7 +193,11 @@ func IsPalindromeIntOpt(x int) bool {
 	revertedNumber := 0
 	// 2. 循环直到 x <= revertedNumber，说明已经反转了一半（或一半多）的数字
 	for x > revertedNumber {
+		// 我们要利用 10 进制的特性，通过取模（%）和除法（/）把数字从源数字 x 的末尾拆下来，装到新数字 revertedNum 的末尾。
+		// 核心定理：位数决定大小。
+		// 假设原数字 x 的总长度是 $L$。我们在循环中，每执行一次，就是把 x 的位数减 1，把 revertedNum 的位数加 1。
 		revertedNumber = revertedNumber*10 + x%10
+		fmt.Println(revertedNumber)
 		x /= 10
 	}
 
